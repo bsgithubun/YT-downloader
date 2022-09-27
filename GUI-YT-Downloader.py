@@ -3,7 +3,8 @@ import tkinter as tk
 from tkinter import *
 from pytube import YouTube
 from tkinter import messagebox, filedialog
- 
+from sys import argv
+
 
 # Defining CreateWidgets() function
 # to create necessary tkinter widgets
@@ -124,10 +125,8 @@ def Download():
     # Creating object of YouTube()
     getVideo = YouTube(Youtube_link)
  
-    # Getting all the available streams of the
-    # youtube video and selecting the first
-    # from the
-    videoStream = getVideo.streams.first()
+    # Getting the highest resolution
+    videoStream = getVideo.streams.get_highest_resolution()
  
     # Downloading the video to destination
     # directory
